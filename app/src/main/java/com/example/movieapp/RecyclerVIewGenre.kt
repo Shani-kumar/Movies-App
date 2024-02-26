@@ -3,11 +3,13 @@ package com.example.movieapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 
 class MyviewHolder(itemView: View): ViewHolder(itemView){
     private val Genre: TextView = itemView.findViewById(R.id.genretext);
@@ -44,8 +46,11 @@ class MyviewHolder(itemView: View): ViewHolder(itemView){
  }
 class NestedviewHolder(itemView: View): ViewHolder(itemView){
     private val name: TextView = itemView.findViewById(R.id.movie_name)
+    private val image: ImageView = itemView.findViewById(R.id.movie_img)
     fun nestedbind(moviename: Movie){
         name.text = moviename.title
+        Glide.with(itemView.context).load(moviename.poster.toString()).centerCrop().placeholder(R.mipmap.ic_launcher) // Placeholder image while loading
+            .error(R.mipmap.ic_launcher).into(image)
     }
 }
 class NestedAdapter(private  val movielist :ArrayList<Movie>): Adapter<NestedviewHolder>() {

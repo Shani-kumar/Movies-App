@@ -11,5 +11,8 @@ data class Movie (
     val releaseDate: String,
 
     @SerializedName("Genre")
-    val genre: String
+    val genre: String,
+
+    @SerializedName("Poster")
+    val poster:String
 )
