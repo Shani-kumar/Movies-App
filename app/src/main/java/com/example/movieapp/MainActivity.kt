@@ -3,6 +3,7 @@ package com.example.movieapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Directory
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,6 +72,15 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
         val imbdrating = movie.imdbRating
         val genre = movie.genre
         val languages = movie.languages
+        val Images:List<String> = movie.Images
+        val img1 :String = Images[0]
+        val img2 = Images[1]
+        val img3= Images[2]
+        val img4:String? = Images[3]
+        val Actors= movie.Actors
+        val Director = movie.Director
+        val Writer = movie.Writer
+        val Avards = movie.Avards
         val intent = Intent(this@MainActivity, Details::class.java)
         intent.putExtra("URL",url)
         intent.putExtra("DESC",desc)
@@ -79,6 +89,14 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
         intent.putExtra("IMBDRATING",imbdrating)
         intent.putExtra("GENRE",genre)
         intent.putExtra("LANGUAGE",languages)
+        intent.putExtra("IMG1",img1)
+        intent.putExtra("IMG2",img2)
+        intent.putExtra("IMG3",img3)
+        intent.putExtra("IMG4",img4)
+        intent.putExtra("DIRECTOR",Director)
+        intent.putExtra("ACTORS",Actors)
+        intent.putExtra("WRITER",Writer)
+        intent.putExtra("AVARDS",Avards)
         startActivity(intent)
 
     }

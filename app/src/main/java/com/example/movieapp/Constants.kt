@@ -5,4 +5,5 @@ package com.example.movieapp
 //const val BASE_URL = "https://run.mocky.io"
 //const val ENDPOINT = "/v3/5a1305c6-392d-4729-865b-bc08b0c2cc1f"
 const val BASE_URL = "https://run.mocky.io"
-const val ENDPOINT = "/v3/09695a82-37f0-486b-9f6c-7df894da4d96"
+//const val ENDPOINT = "/v3/09695a82-37f0-486b-9f6c-7df894da4d96"
+const val ENDPOINT = "/v3/42764ace-5819-4579-80b3-32125131256f"

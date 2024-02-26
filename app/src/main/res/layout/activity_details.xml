@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/black"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:padding="10dp"
+    >
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Details">
 
     <ImageView
@@ -100,6 +107,136 @@
         app:layout_constraintLeft_toLeftOf="parent"
         />
 
+<HorizontalScrollView
+    android:id="@+id/detail_hsv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/detail_languages"
+    app:layout_constraintRight_toLeftOf="parent"
+    android:scrollbars="horizontal"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/img1"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/ic_launcher"
+            />
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/img2"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/ic_launcher"
+            />
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/img3"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/ic_launcher"
+            />
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/img4"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
+</HorizontalScrollView>
+    <TextView
+        android:id="@+id/detail_awards_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/detail_hsv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Awards"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/detail_awards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hello"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_awards_help"
+        />
+
+    <TextView
+        android:id="@+id/detail_cast_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAST"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/detail_awards"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/detail_cast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cast"
+        app:layout_constraintTop_toBottomOf="@+id/detail_cast_help"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/detail_director_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Director "
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/detail_cast"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/detail_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="director"
+        app:layout_constraintTop_toBottomOf="@+id/detail_director_help"
+       app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/detail_writer_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Writer "
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/detail_director"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/detail_writer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="director"
+        app:layout_constraintTop_toBottomOf="@+id/detail_writer_help"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/white"
+        />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

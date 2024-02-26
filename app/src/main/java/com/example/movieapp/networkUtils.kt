@@ -29,7 +29,22 @@ data class Movie (
     val languages:String,
 
     @SerializedName("imdbRating")
-    val imdbRating:String
+    val imdbRating:String,
+
+    @SerializedName("Images")
+    val Images: List<String>,
+
+    @SerializedName("Actors")
+    val Actors:String,
+
+    @SerializedName("Director")
+    val Director:String,
+
+    @SerializedName("Writer")
+    val Writer:String,
+
+    @SerializedName("Awards")
+    val Avards:String
 
 
 
