@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.ContactsContract.Directory
 import android.util.Log
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.ActivityMainBinding
@@ -16,6 +17,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickListener{
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
