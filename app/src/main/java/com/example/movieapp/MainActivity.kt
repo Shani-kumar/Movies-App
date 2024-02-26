@@ -1,5 +1,6 @@
 package com.example.movieapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickListener{
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("printing", it.toString())
                     }
                     binding.mainrv.layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
-                    binding.mainrv.adapter = Myadpater(container)
+                    binding.mainrv.adapter = Myadpater(container,this@MainActivity,this@MainActivity)
                 }
             }
 
@@ -52,8 +53,35 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-    binding.mainrv.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
-        binding.mainrv.adapter =Myadpater(container)
+
+
 
     }
+
+    override fun OnitemClicked(genre: String) {
+        Toast.makeText(this,"$genre",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onMovieItemClick(movie: Movie) {
+//        Toast.makeText(this,movie.title,Toast.LENGTH_LONG).show()
+        val url: String = movie.poster
+        val desc : String = movie.plot
+        val runtime:String= movie.runtime
+        val year:String = movie.year
+        val imbdrating = movie.imdbRating
+        val genre = movie.genre
+        val languages = movie.languages
+        val intent = Intent(this@MainActivity, Details::class.java)
+        intent.putExtra("URL",url)
+        intent.putExtra("DESC",desc)
+        intent.putExtra("RUNTIME",runtime)
+        intent.putExtra("YEAR",year)
+        intent.putExtra("IMBDRATING",imbdrating)
+        intent.putExtra("GENRE",genre)
+        intent.putExtra("LANGUAGE",languages)
+        startActivity(intent)
+
+    }
+
+
 }

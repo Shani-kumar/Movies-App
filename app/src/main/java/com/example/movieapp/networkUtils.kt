@@ -14,5 +14,23 @@ data class Movie (
     val genre: String,
 
     @SerializedName("Poster")
-    val poster:String
+    val poster:String,
+
+    @SerializedName("Plot")
+    val plot: String,
+
+    @SerializedName("Year")
+    val year : String,
+
+    @SerializedName("Runtime")
+    val runtime : String,
+
+    @SerializedName("Language")
+    val languages:String,
+
+    @SerializedName("imdbRating")
+    val imdbRating:String
+
+
+
 )

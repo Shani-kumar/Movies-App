@@ -10,20 +10,25 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import retrofit2.Callback
 
 class MyviewHolder(itemView: View): ViewHolder(itemView){
     private val Genre: TextView = itemView.findViewById(R.id.genretext);
     private val nestedrv: RecyclerView = itemView.findViewById(R.id.nestedrv)
 
-    fun bind(genre: String,genremovielist:ArrayList<Movie> ){
+    fun bind(genre: String,genremovielist:ArrayList<Movie>, listner: OnGenreItemClicked,itemClickListener: OnMovieItemClickListener){
         Genre.text = genre
        nestedrv.layoutManager = LinearLayoutManager(itemView.context,RecyclerView.HORIZONTAL,false)
-        nestedrv.adapter = NestedAdapter(genremovielist)
+        nestedrv.adapter = NestedAdapter(genremovielist,itemClickListener)
 
+        itemView.setOnClickListener {
+            listner.OnitemClicked(genre)
+        }
     }
 }
 
- class Myadpater(private  val genres: HashMap<String,ArrayList<Movie>>): Adapter<MyviewHolder> (){
+ class Myadpater(private val genres: HashMap<String,ArrayList<Movie>>,
+ private val listner: OnGenreItemClicked,private val itemClickListener: OnMovieItemClickListener): Adapter<MyviewHolder> (){
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
          val view = LayoutInflater.from(parent.context)
              .inflate(R.layout.main_item,parent,false)
@@ -40,20 +45,27 @@ class MyviewHolder(itemView: View): ViewHolder(itemView){
 
          val genret = genreList[position]
          val genrem = genremovielist[position]
-         holder.bind(genret,genrem)
+         holder.bind(genret,genrem,listner, itemClickListener )
      }
 
  }
 class NestedviewHolder(itemView: View): ViewHolder(itemView){
     private val name: TextView = itemView.findViewById(R.id.movie_name)
     private val image: ImageView = itemView.findViewById(R.id.movie_img)
-    fun nestedbind(moviename: Movie){
+    fun nestedbind(moviename: Movie,itemClickListener: OnMovieItemClickListener){
         name.text = moviename.title
         Glide.with(itemView.context).load(moviename.poster.toString()).centerCrop().placeholder(R.mipmap.ic_launcher) // Placeholder image while loading
             .error(R.mipmap.ic_launcher).into(image)
+
+        itemView.setOnClickListener {
+            itemClickListener.onMovieItemClick(moviename)
+        }
+
+
     }
 }
-class NestedAdapter(private  val movielist :ArrayList<Movie>): Adapter<NestedviewHolder>() {
+class NestedAdapter(
+    private  val movielist :ArrayList<Movie>, private val itemClickListener: OnMovieItemClickListener): Adapter<NestedviewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NestedviewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_item,parent,false)
@@ -66,7 +78,16 @@ class NestedAdapter(private  val movielist :ArrayList<Movie>): Adapter<Nestedvie
 
     override fun onBindViewHolder(holder: NestedviewHolder, position: Int) {
         val movieitem = movielist[position]
-        holder.nestedbind(movieitem)
+        holder.nestedbind(movieitem,itemClickListener)
     }
 
 }
+
+interface OnGenreItemClicked{
+    fun OnitemClicked(genre: String)
+}
+
+interface OnMovieItemClickListener {
+    fun onMovieItemClick(movie: Movie)
+}
+
