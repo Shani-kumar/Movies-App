@@ -8,11 +8,10 @@ import retrofit2.http.GET
 
 interface MovieDataService{
     @GET(ENDPOINT)
-    fun fetchDogBreeds(): Call<List<Movie>>
+    fun fetchMovies(): Call<List<Movie>>
 }
 
 val api by lazy {
-
     Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())

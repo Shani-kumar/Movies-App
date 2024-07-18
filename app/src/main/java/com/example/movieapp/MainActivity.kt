@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
         setContentView(binding.root)
 
         var container: HashMap<String, ArrayList<Movie>> = HashMap()
-        api.fetchDogBreeds().enqueue(object : Callback<List<Movie>?> {
+        api.fetchMovies().enqueue(object : Callback<List<Movie>?> {
             override fun onResponse(
                 call: Call<List<Movie>?>,
                 response: Response<List<Movie>?>
@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
                             temp?.add(d)
                             container[i] = temp!!
                         }
-
                     }
                     container.forEach {
                         Log.d("printing", it.toString())
@@ -54,11 +53,6 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
                 Toast.makeText(this@MainActivity,"Error${t.message}", Toast.LENGTH_LONG).show()
             }
         })
-
-
-
-
-
     }
 
     override fun OnitemClicked(genre: String) {
@@ -100,8 +94,5 @@ class MainActivity : AppCompatActivity(),OnGenreItemClicked , OnMovieItemClickLi
         intent.putExtra("WRITER",Writer)
         intent.putExtra("AVARDS",Avards)
         startActivity(intent)
-
     }
-
-
 }

@@ -54,7 +54,7 @@ class NestedviewHolder(itemView: View): ViewHolder(itemView){
     private val image: ImageView = itemView.findViewById(R.id.movie_img)
     fun nestedbind(moviename: Movie,itemClickListener: OnMovieItemClickListener){
         name.text = moviename.title
-        Glide.with(itemView.context).load(moviename.poster.toString()).centerCrop().placeholder(R.mipmap.ic_launcher) // Placeholder image while loading
+        Glide.with(itemView.context).load(moviename.poster.toString()).centerCrop().placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher).into(image)
 
         itemView.setOnClickListener {
